@@ -11,19 +11,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-class CreateCmdbs < ActiveRecord::Migration
+class CreateClawhammers < ActiveRecord::Migration
   def change
     create_table :cmdbs do |t|
       t.string :name
-      t.string :description
-      t.string :order
-      t.string :connect
-      t.string :disposition
-      t.string :executor
-      t.string :initializer
-      t.string :type
-
-      t.references :proposal_config
 
       t.timestamps
     end

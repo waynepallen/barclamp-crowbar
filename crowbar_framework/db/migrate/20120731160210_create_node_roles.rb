@@ -1,3 +1,4 @@
+# Copyright 2012, Dell
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -11,17 +12,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-class CreateCmdbRuns < ActiveRecord::Migration
+# Author: aabes
+# Author: JuddMaltin
+#
+class CreateNodeRoles < ActiveRecord::Migration
   def change
-    create_table :cmdb_runs do |t|
-      t.string :name
-      t.string :description
-      t.string :order
-
-      t.references :cmdb
+    create_table :node_roles do |t|
+      t.string       :name
+      t.integer      :status
+      #########
+      # nodes and roles have many node_roles
+      t.references   :node
+      t.references   :role
 
       t.timestamps
     end
+    add_index :node_roles, :node_id
+    add_index :node_roles, :role_id
   end
 end
