@@ -1,3 +1,4 @@
+# Copyright 2012, Dell
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -11,16 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-class CreateCmdbRuns < ActiveRecord::Migration
+# Author: aabes
+#
+class CreateProposals < ActiveRecord::Migration
   def change
-    create_table :cmdb_runs do |t|
-      t.string :name
-      t.string :description
-      t.string :order
-
-      t.references :cmdb
-
+    #####
+    #  proposals, attached to barclamps.
+    #  proposal_configs hold the actual data, with revision counts and node references.
+    create_table :proposals do |t|
+      t.references  :barclamp
+      t.string      :name
+      t.integer     :status
+      t.integer     :last_applied_rev
       t.timestamps
     end
   end

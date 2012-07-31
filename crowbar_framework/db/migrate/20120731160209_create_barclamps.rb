@@ -1,3 +1,4 @@
+# Copyright 2012, Dell
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -11,17 +12,21 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-class CreateCmdbRuns < ActiveRecord::Migration
+# Author: aabes
+#
+class CreateBarclamps < ActiveRecord::Migration
   def change
-    create_table :cmdb_runs do |t|
+    create_table :barclamps do |t|
       t.string :name
+      t.string :version
+      t.string :group
       t.string :description
-      t.string :order
-
-      t.references :cmdb
-
       t.timestamps
+    end
+
+    create_table :barclamp_dependencies, :id=>false do |t|
+      t.integer  :prereq_id
+      t.integer  :barclamp_id
     end
   end
 end

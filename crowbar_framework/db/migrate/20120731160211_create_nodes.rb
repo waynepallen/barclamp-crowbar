@@ -1,3 +1,4 @@
+# Copyright 2012, Dell
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -11,15 +12,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
-class CreateCmdbRuns < ActiveRecord::Migration
+# Author: aabes
+# Author: JuddMaltin
+#
+class CreateNodes < ActiveRecord::Migration
   def change
-    create_table :cmdb_runs do |t|
+    create_table :nodes do |t|
       t.string :name
       t.string :description
-      t.string :order
-
-      t.references :cmdb
+      ######
+      # crowbar internal
+      t.string :alias
+      t.references :proposal_config # FK of latest proposal
 
       t.timestamps
     end
