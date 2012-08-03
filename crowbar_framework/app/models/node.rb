@@ -14,5 +14,5 @@
 #
 
 class Node < ActiveRecord::Base
-  attr_accessible :name, :description
+  attr_accessible :name
 end
