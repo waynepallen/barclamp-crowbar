@@ -15,6 +15,15 @@ class CreateCmdbs < ActiveRecord::Migration
   def change
     create_table :cmdbs do |t|
       t.string :name
+      t.string :description
+      t.string :order
+      t.string :connect
+      t.string :disposition
+      t.string :executor
+      t.string :initializer
+      t.string :type
+
+      t.references :proposal_config
 
       t.timestamps
     end
